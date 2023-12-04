@@ -107,7 +107,7 @@ else:
 flinger_killeen = stats.flinger(sample1, sample2, center="median")
 
 var_sig = []
-if levene[1] < 0.05:  
+if flinger_killeen[1] < 0.05:  
     var_sig.append(False)  
 else:  
     var_sig.append(True)
@@ -119,7 +119,7 @@ else:
 brown_foresythe = stats.levene(sample1, sample2, center="median")
 
 var_sig = []
-if levene[1] < 0.05:  
+if brown_foresythe[1] < 0.05:  
     var_sig.append(False)  
 else:  
     var_sig.append(True)
