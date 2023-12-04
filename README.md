@@ -1,8 +1,6 @@
 # Тесты гипотез в Python
 Набор кода Python по статистическим тестам с комментариями.
 
-Flowchart by [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test-should-i-do/) для определения необходимого теста. Схема для общего ознакомления с темой. Документ не следует ей на 100%.
-
 Информация предоставляется в следующем формате:
 ## <Название теста>
 - <Ограничения теста>
@@ -11,6 +9,7 @@ Flowchart by [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test
 # комментарии
 ```
 
+Flowchart by [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test-should-i-do/) для определения необходимого теста. Схема для общего ознакомления с темой. Документ не следует ей на 100%.
 ![alt text](https://github.com/Makar-Data/python_hypothesis_tests/blob/main/Antoine_Soetewey_flowchart.png?raw=true)
 
 ## Стьюдент-Т-тест для одной выборки
