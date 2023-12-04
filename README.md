@@ -184,12 +184,19 @@ stats.chi2_contingency(observed=observed)
 ```
 
 
+## Фридман-тест для нескольких показателей зависимых непараметрических выборок
+- Минимум 6 repeated samples
+- Минимум 10 наблюдений в каждом
+```Python 
+result = stats.friedmanchisquare(sample1, sample2, sample3)
+```
+
+
 ## ANOVA-тест для более двух совокупностей
 - Наблюдения в выборках должны быть независимы друг от друга
 - Минимум 3 группы
 - Есть гомогенность дисперсий (Александр-Говерн-тест)
 - Генеральные совокупности имеют нормальное распределение (Краскел-Уоллис-h-тест)
-
 Александр-Говерн-тест
 ```Python
 # проверка гомогенности дисперсий
@@ -257,11 +264,11 @@ print(tukey.summary())
 
 
 ## ANOVA-тест для зависимых выборок, односторонняя (одна доп. переменная)
-Можно многостороннюю, если передать в within список переменных
 - Минимум 3 группы
 - Каждое наблюдение должно состоять в отношении с другим в иных группах
+- Предполагает равенство дисперсий
 ```Python
-from` `statsmodels.stats.anova` `import` `AnovaRM`
+from statsmodels.stats.anova import AnovaRM
 
 df = pd.read_csv("rmAOV1way.csv")  
 anova = AnovaRM(df, depvar="rt", subject="Sub_id", within=["cond"])  
@@ -272,14 +279,10 @@ result = anova.fit()
 ```
 
 
-## Friedman для нескольких показателей зависимых непараметрических выборок. Разница в том, что тут используются ранги
-- Минимум 3 совокупности
-- Требует более 6 совокупностей для большой надёжности
+## ANOVA-Уэлча-тест
+- Аналог односторонней ANOVA без предположения о равенстве дисперсий
 ```Python
-df = pd.read_csv("rmAOV1way.csv")  
-sample1 = df[:60]  
-sample2 = df[60:]  
-  
-result = stats.friedmanchisquare(sample1["rt"], sample2["rt"], sample2["rt"])
-# повторил выборок, потому что в df только две
+import pingouin as pg
+
+pg.welch_anova(dv="values", between="groups", data=df) 
 ```
