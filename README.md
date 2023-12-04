@@ -119,6 +119,7 @@ else:
     var_sig.append(True)
 ```
 
+Стьюдент-Т-тест для двух независимых выборок
 ```Python
 results = stats.ttest_ind(a = sample1, b = sample2, equal_var=var_sig)
 std_bounds = stats.t.ppf(q=0.025, df=a+b-1)
@@ -200,7 +201,7 @@ stats.alexandergovern(water, normal, grass, bug, psych, fire)
 stats.kruskal(water, normal, grass, bug, psych, fire) 
 ```
 
-  
+ANOVA-тест для более двух совокупностей  
 ```Python
 df = pd.read_csv("pokemon.csv")  
   
