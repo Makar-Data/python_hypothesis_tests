@@ -9,6 +9,8 @@
 # комментарии
 ```
 
+---
+
 Flowchart by [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test-should-i-do/) для определения необходимого теста. Схема для общего ознакомления с темой. Документ не следует ей на 100%.
 ![alt text](https://github.com/Makar-Data/python_hypothesis_tests/blob/main/Antoine_Soetewey_flowchart.png?raw=true)
 
