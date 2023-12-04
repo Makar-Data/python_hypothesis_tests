@@ -195,29 +195,8 @@ result = stats.friedmanchisquare(sample1, sample2, sample3)
 ## ANOVA-тест для более двух совокупностей
 - Наблюдения в выборках должны быть независимы друг от друга
 - Минимум 3 группы
-- Есть гомогенность дисперсий (Александр-Говерн-тест)
-- Генеральные совокупности имеют нормальное распределение (Краскел-Уоллис-h-тест)
-Александр-Говерн-тест
-```Python
-# проверка гомогенности дисперсий
-type_pairs = []  
-for typeA in range(4):  # кол-во групп минус 1 (?)  
-    for typeB in range(typeA + 1, 5):  # кол-во групп плюс 1 (?)  
-        type_pairs.append((types[typeA], types[typeB]))  
-for typeA, typeB in type_pairs:  
-    print(typeA, typeB)  
-    print(stats.levene(df.loc[df["Type 1"] == typeA]["Total"],  
-                          df.loc[df["Type 1"] == typeB]["Total"]))
-
-stats.alexandergovern(water, normal, grass, bug, psych, fire)
-```
-
-Краскел-Уоллис-h-тест
-```Python
-stats.kruskal(water, normal, grass, bug, psych, fire) 
-```
-
-ANOVA-тест для более двух совокупностей  
+- Есть гомогенность дисперсий
+- Генеральные совокупности имеют нормальное распределение
 ```Python
 df = pd.read_csv("pokemon.csv")  
   
@@ -263,7 +242,34 @@ print(tukey.summary())
 ```
 
 
-## ANOVA-тест для зависимых выборок, односторонняя (одна доп. переменная)
+## Александр-Говерн-тест
+- Предполагает нормальность распределения
+- Наблюдения в выборках должны быть независимы друг от друга
+- Есть гомогенность дисперсий
+```Python
+# проверка гомогенности дисперсий
+type_pairs = []  
+for typeA in range(4):  # кол-во групп минус 1 (?)  
+    for typeB in range(typeA + 1, 5):  # кол-во групп плюс 1 (?)  
+        type_pairs.append((types[typeA], types[typeB]))  
+for typeA, typeB in type_pairs:  
+    print(typeA, typeB)  
+    print(stats.levene(df.loc[df["Type 1"] == typeA]["Total"],  
+                          df.loc[df["Type 1"] == typeB]["Total"]))
+
+stats.alexandergovern(water, normal, grass, bug, psych, fire)
+```
+
+
+## Краскел-Уоллис-h-тест
+- Наблюдения в выборках должны быть независимы друг от друга
+- Непараметрическая версия ANOVA
+```Python
+stats.kruskal(water, normal, grass, bug, psych, fire) 
+```
+
+
+## RM-ANOVA-тест для зависимых выборок, односторонняя (одна доп. переменная)
 - Минимум 3 группы
 - Каждое наблюдение должно состоять в отношении с другим в иных группах
 - Предполагает равенство дисперсий
@@ -274,7 +280,7 @@ df = pd.read_csv("rmAOV1way.csv")
 anova = AnovaRM(df, depvar="rt", subject="Sub_id", within=["cond"])  
 # depvar = зависимый показатель, который отличается со временем
 # subject = id субъектов эксперимента. Всё в одном df, поэтому эти id повторяются
-# within = вещь, которая делает анову ановой. Дополнительные переменные, на которые мы смотрим
+# within = дополнительные переменные, на которые мы смотрим
 result = anova.fit()
 ```
 
