@@ -1,5 +1,7 @@
-# python_hypothesis_tests
+# Тесты гипотез в Python
+Набор кода Python по статистическим тестам с комментариями.
 
+Flowchart by [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test-should-i-do/) для определения необходимого теста
 ![alt text](https://github.com/Makar-Data/python_hypothesis_tests/blob/main/Antoine_Soetewey_flowchart.png?raw=true)
 
 Группы тестов
