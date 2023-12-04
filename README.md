@@ -1,8 +1,6 @@
 # python_hypothesis_tests
 
-Документ - набор тестов гипотез в Python, использованных на личных проектах
-
-# TEST ROADMAP
+![alt text](https://github.com/Makar-Data/python_hypothesis_tests/blob/main/Antoine_Soetewey_flowchart.png?raw=true)
 
 Группы тестов
 Конкретные тесты с требованиями (и гиперссылкой на них в тексте?)
