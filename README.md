@@ -21,6 +21,8 @@ Flowchart [Antoine Soetewey](https://statsandr.com/blog/what-statistical-test-sh
 - Наблюдения в выборке должны быть независимы друг от друга
 - Лучше не использовать на небольшие выборки
 ```Python
+from scipy import stats
+
 results = stats.ttest_1samp(a = minnesota_ages, popmean = population_ages.mean())  
 std_bounds = stats.t.ppf(q=0.025, df=49) 
 
@@ -31,6 +33,26 @@ std_bounds = stats.t.ppf(q=0.025, df=49)
 
 # pvalue - вероятность случайности наблюдения при Г0
 # если перешла низкий порог, то значимо
+```
+
+## Шапиро-Уилк-тест соответствия нормальному распределению
+```Python
+stats.shapiro(df)
+```
+
+## Колмогоров-Смирнов-тест соответствия
+- Минимум 50 наблюдений
+```Python
+from scipy import stats
+
+dist = getattr(stats, 'norm')
+param = dist.fit(df)
+result = stats.kstest(df, 'norm', args=param)
+```
+
+## Шапиро-Уилк-тест соответствия нормальному распределению
+```Python
+stats.shapiro(df)
 ```
 
 
